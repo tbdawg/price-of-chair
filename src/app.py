@@ -20,7 +20,7 @@ def init_db():
 
 @app.route('/')
 def home():
-    return render_template('home.jinja2')
+    return render_template('home.jinja2', URI=Database.URI)
 
 app.register_blueprint(src.models.users.views.user_blueprint, url_prefix="/users")
 app.register_blueprint(src.models.stores.views.store_blueprint, url_prefix="/stores")
