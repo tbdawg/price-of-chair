@@ -21,8 +21,8 @@ def init_db():
 
 @app.route('/')
 def home():
-    mLab_Uri = os.environ.get('MONGOLAB_URI')
-    return render_template('home.jinja2', mLab_Uri)
+    mlab_uri = os.environ.get('MONGOLAB_URI')
+    return render_template('home.jinja2', mLab_Uri=mlab_uri)
 
 app.register_blueprint(src.models.users.views.user_blueprint, url_prefix="/users")
 app.register_blueprint(src.models.stores.views.store_blueprint, url_prefix="/stores")
