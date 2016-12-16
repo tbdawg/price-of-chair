@@ -1,4 +1,8 @@
 from flask import Flask, render_template
+
+import src.models.alerts.views
+import src.models.stores.views
+import src.models.users.views
 from src.common.database import Database
 
 __author__ = 'jslvtr'
@@ -18,9 +22,6 @@ def init_db():
 def home():
     return render_template('home.jinja2')
 
-from src.models.users.views import user_blueprint
-from src.models.stores.views import store_blueprint
-from src.models.alerts.views import alert_blueprint
-app.register_blueprint(user_blueprint, url_prefix="/users")
-app.register_blueprint(store_blueprint, url_prefix="/stores")
-app.register_blueprint(alert_blueprint, url_prefix="/alerts")
+app.register_blueprint(src.models.users.views.user_blueprint, url_prefix="/users")
+app.register_blueprint(src.models.stores.views.store_blueprint, url_prefix="/stores")
+app.register_blueprint(src.models.alerts.views.alert_blueprint, url_prefix="/alerts")
