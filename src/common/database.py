@@ -6,13 +6,13 @@ __author__ = 'jslvtr'
 
 
 class Database(object):
-    URI = os.environ.get('MONGOLAB_URI')
+    URI = os.environ.get('MONGODB_URI')
     DATABASE = None
 
     @staticmethod
     def initialize():
         client = pymongo.MongoClient(Database.URI)
-        Database.DATABASE = client['heroku_7mn53hv3']
+        Database.DATABASE = client.get_default_database()
 
     @staticmethod
     def insert(collection, data):
